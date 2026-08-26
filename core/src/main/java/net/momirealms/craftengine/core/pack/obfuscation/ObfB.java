@@ -43,7 +43,7 @@ public final class ObfB {
     }
 
     // Compatibility factory used by the obfuscated resource-pack parser.
-    protected static ObfB µ£ëµ¼¥µ©©µêÅÞÂèÕñºÞÂèÕ╣┤Þ¢╗(String value, ObfA type) {
+    protected static ObfB \u6709\u6b3e\u6e38\u620f\u8d8a\u5927\u8d8a\u5e74\u8f7b(String value, ObfA type) {
         return noOneCallsYouLittleBrotherHere(value, type, false, false);
     }
 
