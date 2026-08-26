@@ -19,15 +19,22 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class BukkitCustomMobManager {
+    private static final Map<BukkitCraftEngine, BukkitCustomMobManager> INSTANCES = new WeakHashMap<>();
+
+    public static synchronized BukkitCustomMobManager getOrCreate(BukkitCraftEngine plugin) {
+        return INSTANCES.computeIfAbsent(plugin, BukkitCustomMobManager::new);
+    }
+
     private final BukkitCraftEngine plugin;
     private final JavaPlugin javaPlugin;
     private final Map<String, CustomMobDefinition> definitions = new ConcurrentHashMap<>();
     private final NamespacedKey mobIdKey;
 
-    public BukkitCustomMobManager(BukkitCraftEngine plugin) {
+    private BukkitCustomMobManager(BukkitCraftEngine plugin) {
         this.plugin = plugin;
         this.javaPlugin = plugin.javaPlugin();
         this.mobIdKey = new NamespacedKey(javaPlugin, "custom_mob_id");
+        load();
     }
 
     public void load() {
