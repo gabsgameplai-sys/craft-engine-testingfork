@@ -162,11 +162,15 @@ public class ObfC {
     }
 
     private void writeUpdatedConfig(Path path, JsonObject data) throws IOException {
-        try (JsonWriter writer = new JsonWriter(new FileWriter(path.toFile()))) _jsonProcessor.toJson(data, writer);
+        try (JsonWriter writer = new JsonWriter(new FileWriter(path.toFile()))) {
+            _jsonProcessor.toJson(data, writer);
+        }
     }
 
     private void rewriteConfigFile(Path path, Map<String, Object> data) throws IOException {
-        try (JsonWriter writer = new JsonWriter(new FileWriter(path.toFile()))) _jsonProcessor.toJson(data, (Type) writer);
+        try (JsonWriter writer = new JsonWriter(new FileWriter(path.toFile()))) {
+            _jsonProcessor.toJson(data, (Type) writer);
+        }
     }
 
     private static class ConfigurationException extends RuntimeException {
