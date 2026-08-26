@@ -2,7 +2,6 @@ package net.momirealms.craftengine.bukkit.plugin.command.feature;
 
 import net.kyori.adventure.text.Component;
 import net.momirealms.craftengine.bukkit.entity.mob.BukkitCustomMobManager;
-import net.momirealms.craftengine.bukkit.plugin.BukkitCraftEngine;
 import net.momirealms.craftengine.bukkit.plugin.command.BukkitCommandFeature;
 import net.momirealms.craftengine.core.plugin.CraftEngine;
 import net.momirealms.craftengine.core.plugin.command.CraftEngineCommandManager;
@@ -16,7 +15,7 @@ public final class CustomMobCommand extends BukkitCommandFeature<CommandSender> 
 
     public CustomMobCommand(CraftEngineCommandManager<CommandSender> commandManager, CraftEngine plugin) {
         super(commandManager, plugin);
-        this.mobManager = ((BukkitCraftEngine) plugin).customMobManager();
+        this.mobManager = BukkitCustomMobManager.getOrCreate(plugin());
     }
 
     @Override
