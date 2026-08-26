@@ -1,0 +1,7 @@
+name: CraftEngine
+version: ${version}
+main: net.momirealms.craftengine.bukkit.CraftEngine
+api-version: '1.21'
+author: XiaoMoMi
+description: Custom item, block, furniture and resource pack engine.
+load: POSTWORLD
