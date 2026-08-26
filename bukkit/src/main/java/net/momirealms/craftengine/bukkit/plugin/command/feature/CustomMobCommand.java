@@ -22,22 +22,23 @@ public final class CustomMobCommand extends BukkitCommandFeature<CommandSender> 
     @Override
     public Command.Builder<? extends CommandSender> assembleCommand(org.incendo.cloud.CommandManager<CommandSender> manager, Command.Builder<CommandSender> builder) {
         return builder
-                .literal("list")
-                .handler(context -> context.sender().sendMessage(Component.text("Custom mobs: " + String.join(", ", mobManager.ids()))))
-                .or(builder.literal("spawn")
-                        .required("id", StringParser.stringParser())
-                        .handler(context -> {
-                            if (!(context.sender() instanceof Player player)) {
-                                context.sender().sendMessage(Component.text("This command must be run by a player."));
-                                return;
-                            }
-                            String id = context.get("id");
-                            if (mobManager.spawn(id, player.getLocation()).isPresent()) {
-                                context.sender().sendMessage(Component.text("Spawned custom mob: " + id));
-                            } else {
-                                context.sender().sendMessage(Component.text("Unknown custom mob: " + id));
-                            }
-                        }));
+                .optional("id", StringParser.stringParser())
+                .handler(context -> {
+                    if (context.optional("id").isEmpty()) {
+                        context.sender().sendMessage(Component.text("Custom mobs: " + String.join(", ", mobManager.ids())));
+                        return;
+                    }
+                    if (!(context.sender() instanceof Player player)) {
+                        context.sender().sendMessage(Component.text("This command must be run by a player."));
+                        return;
+                    }
+                    String id = context.get("id");
+                    if (mobManager.spawn(id, player.getLocation()).isPresent()) {
+                        context.sender().sendMessage(Component.text("Spawned custom mob: " + id));
+                    } else {
+                        context.sender().sendMessage(Component.text("Unknown custom mob: " + id));
+                    }
+                });
     }
 
     @Override
