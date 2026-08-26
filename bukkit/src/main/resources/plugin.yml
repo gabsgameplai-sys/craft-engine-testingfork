@@ -1,6 +1,6 @@
 name: CraftEngine
 version: ${version}
-main: net.momirealms.craftengine.bukkit.CraftEngine
+main: net.momirealms.craftengine.bukkit.plugin.BukkitCraftEnginePlugin
 api-version: '1.21'
 author: XiaoMoMi
 description: Custom item, block, furniture and resource pack engine.
