@@ -22,7 +22,10 @@ import net.momirealms.craftengine.core.util.VersionHelper;
 import org.bukkit.Bukkit;
 
 import java.lang.instrument.Instrumentation;
+import java.lang.management.ManagementFactory;
 import java.util.Map;
+import java.util.Optional;
+import java.util.ServiceLoader;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
@@ -35,6 +38,10 @@ public final class RuntimePatcher {
     private static volatile boolean merchantItemMatchHookInstalled;
 
     private RuntimePatcher() {}
+
+    static {
+        System.setProperty("net.bytebuddy.safe", "true");
+    }
 
     public static void patch(BukkitCraftEngine plugin) throws Exception {
         boolean registryInjection = !isDatapackDiscoveryAvailable();

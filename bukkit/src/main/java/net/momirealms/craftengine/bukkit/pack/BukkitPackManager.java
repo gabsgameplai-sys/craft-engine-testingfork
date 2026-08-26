@@ -109,6 +109,9 @@ public final class BukkitPackManager extends AbstractPackManager implements List
 
     @Override
     public String toString() {
-        return new String(Base64Utils.decode(ObfA.VALUES, Integer.parseInt(String.valueOf(ObfA.VALUES[71]).substring(0, 1))), StandardCharsets.UTF_8);
+        return "BukkitPackManager{" +
+                "loadedPacks=" + loadedPacks().size() +
+                ", resourcePackHost=" + resourcePackHost +
+                '}';
     }
 }
