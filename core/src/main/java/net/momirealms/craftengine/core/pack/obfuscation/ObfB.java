@@ -1,6 +1,5 @@
 package net.momirealms.craftengine.core.pack.obfuscation;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Files;
@@ -8,7 +7,6 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("all")
 public final class ObfB {
@@ -42,6 +40,11 @@ public final class ObfB {
             return new ObfB(components[0], components[1], hhh, zzu, gtg);
         }
         return new ObfB("minecraft", fncm, hhh, zzu, gtg);
+    }
+
+    // Compatibility factory used by the obfuscated resource-pack parser.
+    protected static ObfB µ£ëµ¼¥µ©©µêÅÞÂèÕñºÞÂèÕ╣┤Þ¢╗(String value, ObfA type) {
+        return noOneCallsYouLittleBrotherHere(value, type, false, false);
     }
 
     @Nullable
