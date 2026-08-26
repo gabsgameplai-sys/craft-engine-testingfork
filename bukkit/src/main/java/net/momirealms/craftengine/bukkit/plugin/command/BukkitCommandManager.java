@@ -33,6 +33,7 @@ public final class BukkitCommandManager extends AbstractCommandManager<CommandSe
         this.plugin = plugin;
         this.index = Index.create(CommandFeature::getFeatureID, List.of(
                 new ReloadCommand(this, plugin),
+                new CustomMobCommand(this, plugin),
                 new GetItemCommand(this, plugin),
                 new GiveItemCommand(this, plugin),
                 new ClearItemCommand(this, plugin),
